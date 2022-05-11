@@ -9,6 +9,7 @@ python-dotenv = "*"
 
 [dev-packages]
 flask-dotenv = "*"
+black = "*"
 
 [requires]
 python_version = "3.10"
