@@ -1,0 +1,34 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: scalyr-deployment
+  labels:
+    app: scalyr
+spec:
+  selector:
+    matchLabels:
+      app: scalyr
+  template:
+    metadata:
+      labels:
+        app: scalyr
+    spec:
+      containers:
+        - name: scalyr-container
+          image: scalyr-demo
+          # "Always" for demo convenience
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 8080
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: scalyr-service
+spec:
+  selector:
+    app: scalyr
+  ports:
+    - protocol: TCP
+      port: 30000
+      targetPort: 8080
