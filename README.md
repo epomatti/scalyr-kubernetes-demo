@@ -18,7 +18,7 @@ helm install '<release>' scalyr-agent --set scalyr.apiKey=$apikey --repo 'https:
 
 ### 2 - Docker Image Cache
 
-Builde the image locally:
+Build the image locally:
 
 ```sh
 # Build the image locally
