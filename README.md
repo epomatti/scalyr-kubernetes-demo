@@ -13,7 +13,7 @@ The [recommended method](https://app.scalyr.com/help/install-agent-kubernetes-he
 # Create or copy your API Key from the Scalyr portal
 apikey='<API KEY>'
 
-helm install my-release scalyr-agent --set scalyr.apiKey=$apikey --repo 'https://scalyr.github.io/helm-scalyr/' --wait
+helm install '<release>' scalyr-agent --set scalyr.apiKey=$apikey --repo 'https://scalyr.github.io/helm-scalyr/' --wait
 ```
 
 ### 2 - Docker Image Cache
@@ -24,18 +24,17 @@ Builde the image locally:
 # Build the image locally
 docker build --tag scalyr-demo .
 
-# Add to Minikube cache
-minikube cache add scalyr-demo
+# Add to Minikube cache (takes a minute)
+minikube image load scalyr-demo
 ```
 
 ### 3 - Kubernetes Deploy
 
-```
-kubectl apply -f .
-```
-To access it, open a tunnel in Minikube:
-
 ```sh
+# Root manifest
+kubectl apply -f .
+
+# To access it, open a tunnel in Minikube
 minikube tunnel
 ```
 
@@ -50,10 +49,13 @@ mkdir .venv
 # Ubuntu 22 ad-hoc fix for https://github.com/pypa/setuptools/issues/3278
 export SETUPTOOLS_USE_DISTUTILS=stdlib
 
-# get the dependencies
+# Get the dependencies
 pipenv install --dev
 pipenv shell
 
-# running locally
+# Flask Env
+cp config/dev.flaskenv .flaskenv
+
+# Running locally
 python3 -m flask run
 ```

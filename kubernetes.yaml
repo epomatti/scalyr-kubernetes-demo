@@ -17,7 +17,7 @@ spec:
         - name: scalyr-container
           image: scalyr-demo
           # "Always" for demo convenience
-          imagePullPolicy: Always
+          imagePullPolicy: Never
           ports:
             - containerPort: 8080
 ---
@@ -26,6 +26,7 @@ kind: Service
 metadata:
   name: scalyr-service
 spec:
+  type: LoadBalancer
   selector:
     app: scalyr
   ports:
