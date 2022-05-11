@@ -16,7 +16,7 @@ spec:
       containers:
         - name: scalyr-container
           image: scalyr-demo
-          # "Always" for demo convenience
+          # "Never" for local debugging only
           imagePullPolicy: Never
           ports:
             - containerPort: 8080
