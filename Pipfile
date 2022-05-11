@@ -8,7 +8,6 @@ flask = "*"
 python-dotenv = "*"
 
 [dev-packages]
-flask-dotenv = "*"
 black = "*"
 
 [requires]
