@@ -23,9 +23,12 @@ def exp():
 
 
 @app.route("/logging", methods=["GET"])
-def exp():
-    logging.warning("Watch out!")  # will print a message to the console
-    logging.info("I told you so")  # will not print anything
+def logging_function():
+    logging.critical("CRITICAL")
+    logging.error("ERROR")
+    logging.warning("WARNING")
+    logging.info("INFO")
+    logging.debug("DEBUG")
     return "OK", 200
 
 
